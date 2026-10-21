@@ -1,0 +1,3 @@
+# Derive each candidate from a seed and iteration
+
+The generator must be reproducible and parallelizable without making an iteration number or a simple `seed || iteration` value act as a private key. Derive each candidate with HMAC-SHA-256 keyed by the seed, a fixed domain separator, an unambiguous encoding of the iteration, and a derivation counter; accept only valid secp256k1 scalars using rejection sampling. This makes each candidate independently addressable for parallel work and resume while avoiding modulo bias and accidental cross-protocol reuse. The seed remains secret because it can reproduce every candidate in the run.
