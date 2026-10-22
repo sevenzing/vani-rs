@@ -40,6 +40,7 @@ Build a safe, maintainable Rust CLI that searches deterministic Ethereum key can
 - Never print the full seed or private key, and never put them into logs, Git, or progress documentation. At startup, show only masked previews of the seed and key material, revealing the first and last four characters with the middle replaced by `*`.
 - Apply best-effort zeroization to in-memory seed and private-key buffers.
 - On Ctrl-C, stop cleanly, print final statistics, and print a safe resume command using `--seed-file <path> --iter N` and all non-default search settings. For parallel search, `N` must be a safe lower bound that cannot skip any unexamined iteration; some already-completed work may be repeated. Persisting a separate progress checkpoint is out of scope for the first version.
+- Note: Preserving the next iteration number on interrupt (Ctrl+C) as a file in the result directory (e.g., `next-iteration` with mode `0600`) is a planned improvement to enable automatic resumption without manual parameter copying.
 
 ### Progress and estimates
 
